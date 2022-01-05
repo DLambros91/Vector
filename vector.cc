@@ -40,15 +40,21 @@ class vector {
         }
 
         void insert (int index, T item) {
-
+            if (numItems == maxCapacity) {
+                resize(maxCapacity*2);
+            }
         }   
 
         void prepend (T item) {
+            if (numItems == maxCapacity) {
+                resize(maxCapacity*2);
+            }
+
 
         } 
 
         T pop () {
-            
+            return arr[--numItems];
         } 
 
         void deleteIndex (int index) {
@@ -60,9 +66,14 @@ class vector {
         }
 
         int find (T item) {
-
+            for (int i = 0; i < numItems; i++){
+                if (arr[i] == item){
+                    return i;
+                }
+            }
+            return -1;
         }
-        
+
     private:
         int numItems = 0;
         int maxCapacity = 16;
@@ -89,5 +100,11 @@ int main () {
     
     std::cout << "Item at index 1 is: " << v.at(1) << std::endl;
 
+    std::cout << "Number 4 is at index: " << v.find(4) << std::endl;
+
+    std::cout << "Popping item: " << v.pop() << std::endl;
+    
+    std::cout << "The current size of the vector is: " << v.size() << std::endl;
+    
     return 0;
 }
