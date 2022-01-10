@@ -7,6 +7,7 @@ class vector {
         vector () {
             numItems = 0;
             maxCapacity = 16;
+            arr = new T[maxCapacity];
         }
 
         int size () {
@@ -82,7 +83,7 @@ class vector {
     private:
         int numItems;
         int maxCapacity;
-        T arr[16];
+        T * arr;
         void resize (int newSize) { }
 };
 
