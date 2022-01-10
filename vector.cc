@@ -49,14 +49,16 @@ class vector {
             if (numItems == maxCapacity) {
                 resize(maxCapacity*2);
             }
+
+            for (int i = numItems++; i > index; i--) {
+                arr[i] = arr[i-1];
+            }
+
+            arr[index] = item;
         }   
 
         void prepend (T item) {
-            if (numItems == maxCapacity) {
-                resize(maxCapacity*2);
-            }
-
-
+            insert(0, item);
         } 
 
         T pop () {
@@ -64,7 +66,7 @@ class vector {
         } 
 
         void deleteIndex (int index) {
-
+            
         }
 
         void remove (T item) {
@@ -118,6 +120,20 @@ int main () {
 
     std::cout << "Popping item: " << v.pop() << std::endl;
     
+    std::cout << "The current size of the vector is: " << v.size() << std::endl;
+    
+    v.push(5);
+    v.push(4);
+    v.push(3);
+
+    std::cout << "Item at index 0 is: " << v.at(0) << std::endl;
+    std::cout << "Item at index 1 is: " << v.at(1) << std::endl;
+    std::cout << "The current size of the vector is: " << v.size() << std::endl;
+
+    v.prepend(7);
+
+    std::cout << "Item at index 0 is: " << v.at(0) << std::endl;
+    std::cout << "Item at index 1 is: " << v.at(1) << std::endl;
     std::cout << "The current size of the vector is: " << v.size() << std::endl;
     
     return 0;
