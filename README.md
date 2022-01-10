@@ -1,5 +1,11 @@
 # Vector
-Implementation of vector data structure from arrays
+
+## Description
+Implementation of vector data structure from arrays. Vector is implemented using templates, so the vector is able to store any datatype.
+
+For example, initializing a vector of integers can be done as:
+
+```vector<int> v;```
 
 ## Space 
 Contiguous in memory, so proximity helps performance.
