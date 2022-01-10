@@ -4,6 +4,11 @@ template <typename T>
 
 class vector {
     public: 
+        vector () {
+            numItems = 0;
+            maxCapacity = 16;
+        }
+
         int size () {
             return numItems;
         }
@@ -75,8 +80,8 @@ class vector {
         }
 
     private:
-        int numItems = 0;
-        int maxCapacity = 16;
+        int numItems;
+        int maxCapacity;
         T arr[16];
         void resize (int newSize) { }
 };
