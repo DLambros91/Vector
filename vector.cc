@@ -84,7 +84,15 @@ class vector {
         int numItems;
         int maxCapacity;
         T * arr;
-        void resize (int newSize) { }
+        void resize (int newSize) { 
+            T * tmp = arr;
+            arr = new int[newSize];
+            for (int i = 0; i < maxCapacity; i++) {
+                arr[i] = tmp[i];
+            }
+            delete tmp;
+            maxCapacity = newSize;
+        }
 };
 
 int main () {
