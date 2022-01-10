@@ -65,12 +65,32 @@ class vector {
             return arr[--numItems];
         } 
 
+        void viewItems () {
+            std:: cout << "Vector contents:";
+
+            for (int i = 0; i < numItems; i++) {
+                std::cout << " " << arr[i];
+            }
+
+            std::cout << std::endl;
+        }
+
         void deleteIndex (int index) {
-            
+            for (int i = index; i < numItems; i++) {
+                arr[i] = arr[i+1];
+            }
+
+            numItems--;
         }
 
         void remove (T item) {
+            int i = find(item);
 
+            while (i != -1) {
+                deleteIndex(i);
+
+                i = find(item);
+            }
         }
 
         int find (T item) {
@@ -135,6 +155,20 @@ int main () {
     std::cout << "Item at index 0 is: " << v.at(0) << std::endl;
     std::cout << "Item at index 1 is: " << v.at(1) << std::endl;
     std::cout << "The current size of the vector is: " << v.size() << std::endl;
+    
+    v.viewItems();
+
+    v.insert(4, 6);
+
+    v.viewItems();
+
+    v.deleteIndex(0);
+
+    v.viewItems();
+
+    v.remove(4);
+
+    v.viewItems(); 
     
     return 0;
 }
