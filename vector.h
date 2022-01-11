@@ -61,10 +61,12 @@ class vector {
             return maxCapacity;
         }
 
+        // Returns a boolean value stating whether there is currently any items in the vector
         bool isEmpty () {
             return numItems == 0;
         }
 
+        // Returns items at the given index, -1 if out of bounds
         T at (int index) {
             if (isEmpty()) {
                 std::cout << "Vector is empty. Index out of range." << std::endl;
@@ -77,6 +79,7 @@ class vector {
             return arr[index];
         }
 
+        // Inserts items after last item in vector
         void push (T item) { 
             if (numItems == maxCapacity) {
                 resize(maxCapacity*2);
@@ -84,6 +87,8 @@ class vector {
             arr[numItems++] = item;
         }
 
+        // Inserts item at specified index, shifts that index's value and trailing
+        // elements to the right. Return -1 if out of bounds
         void insert (int index, T item) {
             if (numItems == maxCapacity) {
                 resize(maxCapacity*2);
@@ -96,10 +101,12 @@ class vector {
             arr[index] = item;
         }
 
+        // Insert item at index 0.
         void prepend (T item) {
             insert(0, item);
         }
 
+        // Remove item from the end of the vector and return the value
         T pop () {
             if (isEmpty()) {
                 std::cout << "Vector is empty. Index out of range." << std::endl;
@@ -110,6 +117,7 @@ class vector {
             }
         }
 
+        // Display the items currently stored in the vector
         void viewItems () {
             std:: cout << "Vector contents:";
 
@@ -120,6 +128,7 @@ class vector {
             std::cout << std::endl;
         }
 
+        // Delete item at index, shifting all trailing elements left
         void deleteIndex (int index) {
             if (isEmpty()) {
                 std::cout << "Vector is empty. Index out of range." << std::endl;
@@ -136,6 +145,7 @@ class vector {
             numItems--;
         }
 
+        // Looks for value and removes index holding it (even if in multiple places)
         void remove (T item) {
             int i = find(item);
 
@@ -146,6 +156,7 @@ class vector {
             }
         }
 
+        // Looks for value and returns first index with that value, -1 if not found
         int find (T item) {
             for (int i = 0; i < numItems; i++){
                 if (arr[i] == item){
